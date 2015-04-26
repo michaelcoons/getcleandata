@@ -2,6 +2,7 @@
 
 This is the project for the Getting and Cleaning data course. 
 The repository here contains three files.
+
 1. README.md: Markdown file that explain the repository and the content of
               the files
 2. CodeBook.txt: A text file code book for the "project_final_table.txt"
@@ -11,7 +12,8 @@ The repository here contains three files.
 ### Tidy Data Set
 The data set table in the file "project_final_table.txt" is considered "tidy"
 The reason for this is described below keying off the definition presented in
-the course
+the course.
+
 1. Each variable in one column
    This is true since the key is 2 columns of subject then activity type
    Each numeric value is a mean representation of samples from ONLY that one 
@@ -54,16 +56,14 @@ Below is a high level description of the analysis script and how it works.
 
 4. It was critical to use the feature file to name the columns of the data
    sets but it was untidy so it was cleaned up by
-   4.1 Replacing "()" with "func" for function. This was the most critical
-       replacement since there were other feature names that contained 
-       "mean" that were not the mean variables that I wanted.
-   4.2 Removed all remaining "(", ")", ",", "-"
-   4.3 Made the data lower case. 
+  4.1. Replacing "()" with "func" for function. This was the most critical
+      replacement since there were other feature names that contained 
+      "mean" that were not the mean variables that I wanted.
+  4.2. Removed all remaining "(", ")", ",", "-"
+  4.3. Made the data lower case. 
 
 5. Then the tidy feature names were used to name the columns of the train
    and test data sets. 
-
-<!-- -->
 
     count <- nrow(features)
     for (i in 1:count)
@@ -79,8 +79,8 @@ Below is a high level description of the analysis script and how it works.
 7. The reset of the data frames were labeled before any combining occured. 
 
 8. To create the full train data set and test data set the same steps were used
-   8.1 Column bind the 3 proper data frames for each by subject, activity, and 
-       data 
+   8.1. Column bind the 3 proper data frames for each by subject, activity, and 
+        data 
 
 9. At this point both the train and test data sets were merged using row bind.
 
@@ -94,16 +94,15 @@ Below is a high level description of the analysis script and how it works.
     activity code in the data column as a match to the code in the activity
     table. This got the correct row and then the description in col 2 was pulled.
 
-<!-- -->
 
     fulldatasort$activity[i] <- as.character(activelabels[fulldatasort#activity[i] ,2])
 
 12. At this point we had all the information in the correct format to make the
     final data frame. This was created by:
-    12.1 Take the wide data into a narrow representation using melt with 
-         "subject" and "activity" as the ID and the rest of the columns as 
-	 the measurements. 
-    12.2 Then create the tidy, final table using dcast and applying the mean()
+  12.1. Take the wide data into a narrow representation using melt with 
+        "subject" and "activity" as the ID and the rest of the columns as 
+        the measurements. 
+  12.2. Then create the tidy, final table using dcast and applying the mean()
          function on the sample variables. 
 
 13. Write the table out with row names = FALSE per the assignment. 
@@ -112,6 +111,7 @@ Below is a high level description of the analysis script and how it works.
 
 ### READING AND VIEWING THE TABLE
 To read the table itself please use the following steps,
+
 1. Download the "project_final_table.txt" from the Project review section.
 2. Place the file into your local R working directory. 
 3. Use the read.table command with headers = TRUE 
