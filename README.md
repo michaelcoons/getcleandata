@@ -56,11 +56,11 @@ Below is a high level description of the analysis script and how it works.
 
 4. It was critical to use the feature file to name the columns of the data
    sets but it was untidy so it was cleaned up by
-  4.1. Replacing "()" with "func" for function. This was the most critical
+  1. Replacing "()" with "func" for function. This was the most critical
       replacement since there were other feature names that contained 
       "mean" that were not the mean variables that I wanted.
-  4.2. Removed all remaining "(", ")", ",", "-"
-  4.3. Made the data lower case. 
+  2. Removed all remaining "(", ")", ",", "-"
+  3. Made the data lower case. 
 
 5. Then the tidy feature names were used to name the columns of the train
    and test data sets. 
@@ -99,10 +99,10 @@ Below is a high level description of the analysis script and how it works.
 
 12. At this point we had all the information in the correct format to make the
     final data frame. This was created by:
-  12.1. Take the wide data into a narrow representation using melt with 
+  1. Take the wide data into a narrow representation using melt with 
         "subject" and "activity" as the ID and the rest of the columns as 
         the measurements. 
-  12.2. Then create the tidy, final table using dcast and applying the mean()
+  2. Then create the tidy, final table using dcast and applying the mean()
          function on the sample variables. 
 
 13. Write the table out with row names = FALSE per the assignment. 
